@@ -31,13 +31,13 @@ class TFMConfig:
     n_reference: int = 2**10
 
     # Ordinary labels
-    paths_per_scenario: int = 2**11
+    paths_per_scenario: int = 2**13
     label_replications: int = 1
     label_engine: str = "rqmc"  # "mc" or "rqmc"
 
     # Reference labels: 8 x 8192 = 65536 paths per state
     reference_paths_per_replication: int = 2**13
-    reference_replications: int = 8
+    reference_replications: int = 16
     reference_engine: str = "rqmc"
 
     # Reproducibility
@@ -65,13 +65,12 @@ class TFMConfig:
 
 
 def pilot_config() -> TFMConfig:
-    """Small configuration to verify the pipeline on a laptop."""
     return TFMConfig(
         n_train=2**10,
         n_val=2**8,
         n_test=2**8,
         n_reference=2**6,
-        paths_per_scenario=2**9,
+        paths_per_scenario=2**10,
         reference_paths_per_replication=2**11,
         reference_replications=4,
     )
