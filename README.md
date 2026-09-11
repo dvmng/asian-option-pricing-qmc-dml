@@ -1,112 +1,177 @@
-# TFM — Arithmetic Asian Option: MC/QMC + MLP/DML
+# Valoración y cobertura de opciones asiáticas
 
-Código de la **fase de datos y experimento numérico**.
+Código, datos y evidencia reproducible del Trabajo Fin de Máster del Máster en Finanzas Cuantitativas.
 
-## Diseño implementado
+El proyecto estudia la valoración de opciones asiáticas aritméticas sobre capacidad de cómputo y la estimación de Delta mediante Randomized Quasi-Monte Carlo (RQMC), un perceptrón multicapa (MLP) y Differential Machine Learning (DML). La evaluación incluye análisis fuera de muestra, diagnóstico de errores y ejercicios de cobertura local y dinámica.
 
-Contrato principal:
+## Memoria del TFM
 
-- Arithmetic Asian call discretamente monitorizada.
-- `K = 1`.
-- `T = 1` año.
-- 12 fixings mensuales.
-- GBM risk-neutral.
-- `q = 0` en el núcleo del TFM.
+**[Leer o descargar el TFM completo (PDF)](thesis/main.pdf)**
 
-Inputs del futuro surrogate:
+Autor: David Martín Gómez. Este repositorio contiene la versión final del código y la evidencia reproducible que acompaña a la memoria. Las instrucciones de comprobación y reproducción se incluyen a continuación.
 
-1. `S_t_K = S_t / K`
-2. `C_t = (1/N) sum_{fixing<=t} S_fixing/K`
-3. `tau = T - t`
-4. `r`
-5. `sigma`
+## Estructura del repositorio
 
-Targets:
-
-- `price_K = V_t / K`
-- `delta = dV/dS_t`
-
-`S_t/K` y el average pasado **no se generan independientemente**. Ambos salen
-de la misma trayectoria histórica GBM.
-
-## Archivos
-
-- `config.py`: parámetros y semillas.
-- `asian_simulation.py`: GBM, estados, MC, RQMC-Sobol, precio, Delta pathwise y finite differences.
-- `generate_datasets.py`: crea train/validation/test/reference.
-- `validate_datasets.py`: consistencia financiera y anti-leakage.
-- `benchmark_mc_qmc.py`: comparación homogénea MC vs scrambled Sobol.
-- `hk_real_data.py`: datos reales opcionales de Hong Kong para calibración/contexto.
-
-## Instalación
-
-```bash
-pip install -r requirements.txt
+```text
+tfm_compute_thesis/
+├── data/
+│   ├── raw/                         datos de mercado preservados
+│   ├── processed/                   datos derivados y normalizados
+│   ├── frozen/                      datasets exactos usados en el TFM
+│   ├── staging/                     nuevas descargas no congeladas
+│   └── reproduced/                  datasets regenerados
+├── models/
+│   ├── final/                       40 checkpoints usados en el TFM
+│   └── reproduced/                  nuevos entrenamientos
+├── results/
+│   ├── calibration/
+│   ├── diagnostics/
+│   ├── hedging/
+│   ├── market/
+│   ├── ml/
+│   ├── model_selection/
+│   ├── pricing/
+│   └── reproduced/                  resultados de nuevas ejecuciones
+├── protocols/                       configuración metodológica final
+├── src/                             implementación cuantitativa
+├── experiments/                     ocho etapas ejecutables
+├── checks/                          controles estructurales y de regresión
+├── figures/                         figuras utilizadas por el TFM
+├── tables/                          tablas generadas para el TFM
+├── thesis/                          fuentes LaTeX y PDF final
+├── main.py
+├── pyproject.toml
+└── requirements.txt
 ```
 
-## 1. Ejecutar primero un piloto
+Los directorios `data/frozen/`, `models/final/` y los resultados finales conservan la evidencia utilizada en el documento. Las nuevas ejecuciones se escriben en `data/reproduced/`, `models/reproduced/` y `results/reproduced/` para evitar cualquier sobrescritura accidental.
 
-```bash
-python generate_datasets.py --preset pilot --split all
-python validate_datasets.py --preset pilot --fd-check
+## Entorno
+
+Se requiere Python 3.11 o superior. La evaluación final se realizó con PyTorch 2.12.1 y CUDA 12.6; una GPU CUDA es recomendable para regenerar el dataset RQMC y reentrenar la cuadrícula completa de modelos.
+
+Instalación:
+
+```powershell
+python -m pip install -r requirements.txt
+python -m pip install -e . --no-build-isolation
 ```
 
-El piloto comprueba que todo funciona antes de lanzar el experimento final.
+Si se utiliza CUDA, la instalación de PyTorch debe corresponder a la versión CUDA disponible en el equipo.
 
-## 2. Dataset final previsto
+## Comprobación de la entrega
 
-```bash
-python generate_datasets.py --preset tfm --split train
-python generate_datasets.py --preset tfm --split val
-python generate_datasets.py --preset tfm --split test
-python generate_datasets.py --preset tfm --split reference
-python validate_datasets.py --preset tfm --fd-check
+Ejecutar desde la raíz del repositorio:
+
+```powershell
+python main.py --checks
+python main.py --layout
+python main.py --outputs
 ```
 
-El preset `tfm` es deliberadamente costoso. No lo ejecutes hasta verificar tiempos
-con el piloto.
+`--checks` valida la integridad del dataset congelado, la cuadrícula de 40 modelos finales, los protocolos de cobertura y los principales resultados utilizados por el TFM. `--outputs` regenera las figuras y tablas del documento a partir de la evidencia final almacenada, sin reentrenar modelos.
 
-## 3. MC vs QMC
+## Flujo experimental
 
-Piloto:
-
-```bash
-python benchmark_mc_qmc.py --preset pilot
+```text
+Datos de mercado preservados
+        ↓
+Análisis descriptivo y calibración Log-OU
+        ↓
+Generación del dataset RQMC de precio y Delta
+        ↓
+Entrenamiento MLP / DML
+        ↓
+Evaluación fuera de muestra
+        ↓
+Diagnóstico de errores
+        ↓
+Cobertura local
+        ↓
+Cobertura dinámica
 ```
 
-Experimento final:
+Las etapas ejecutables son:
 
-```bash
-python benchmark_mc_qmc.py --preset tfm
+| Etapa | Script | Función |
+|---:|---|---|
+| 1 | `01_market_data.py` | Inspección de datos preservados y descarga opcional de nuevos datos Ornn |
+| 2 | `02_market_analysis.py` | Análisis descriptivo multi-GPU |
+| 3 | `03_model_calibration.py` | Calibración física del modelo Log-OU |
+| 4 | `04_pricing_dataset.py` | Generación del dataset RQMC de precio y Delta |
+| 5 | `05_ml_training.py` | Entrenamiento de MLP y DML |
+| 6 | `06_ml_evaluation.py` | Evaluación final sobre test y referencia |
+| 7 | `07_local_hedging.py` | Validación de cobertura local |
+| 8 | `08_dynamic_hedging.py` | Stress test de cobertura dinámica |
+
+La ayuda específica de cada etapa puede consultarse con, por ejemplo:
+
+```powershell
+python main.py --experiment 5 -- --help
 ```
 
-La distinción metodológica es explícita:
+## Reproducción del experimento final
 
-- Sobol exterior en `generate_states`: diseño del espacio de parámetros.
-- RQMC-Sobol interior en `price_state`: innovaciones Brownianas de las trayectorias.
+La siguiente secuencia regenera el núcleo computacional sin modificar la evidencia original.
 
-Solo el segundo caso se denomina **QMC pricing**.
+Generar nuevamente el dataset de valoración:
 
-## 4. Datos reales de Hong Kong
-
-Ejemplo con Tencent:
-
-```bash
-python hk_real_data.py --ticker 0700.HK --start 2021-01-01 --end 2026-08-21
+```powershell
+python main.py --experiment 4 -- --preset tfm --device cuda --output data/reproduced/pricing_dataset
 ```
 
-Otros tickers útiles:
+Reentrenar la cuadrícula completa de 40 modelos. Si `data/reproduced/ml_prepared/train_order.npy` no existe, se reconstruye automáticamente con la semilla fijada en el protocolo del proyecto y se comprueba contra el orden congelado:
 
-- `1810.HK`: Xiaomi
-- `9988.HK`: Alibaba
-- `0005.HK`: HSBC Holdings
-- `1299.HK`: AIA
-- `^HSI`: Hang Seng Index
+```powershell
+python main.py --experiment 5 -- --data-dir data/reproduced/pricing_dataset --prepared-dir data/reproduced/ml_prepared --output-dir models/reproduced --full-grid --device cuda
+```
 
-El script usa:
+Evaluar los modelos reproducidos:
 
-- Yahoo Finance mediante `yfinance` para series diarias gratuitas del subyacente.
-- API oficial de HKMA para HIBOR.
+```powershell
+python main.py --experiment 6 -- --data-dir data/reproduced/pricing_dataset --results-dir models/reproduced --output-dir results/reproduced/ml_evaluation --device cuda --save-predictions
+```
 
-Los datos reales son **complementarios**. El núcleo del dataset de pricing sigue
-siendo simulado; no se necesitan cotizaciones históricas de Asian options.
+Repetir los ejercicios de cobertura con los modelos reproducidos:
+
+```powershell
+python main.py --experiment 7 -- --models-dir models/reproduced --output-dir results/reproduced/hedging/local --device cuda
+python main.py --experiment 8 -- --models-dir models/reproduced --output-dir results/reproduced/hedging/dynamic_forward --device cuda
+```
+
+Los CSV reproducidos pueden contrastarse con la evidencia final mediante `checks/regression_check.py`. Por ejemplo:
+
+```powershell
+python checks/regression_check.py results/ml/final_evaluation/aggregate_metrics.csv results/reproduced/ml_evaluation/aggregate_metrics.csv
+```
+
+## Datos de mercado
+
+Los datos utilizados por el TFM se conservan en `data/raw/` y `data/processed/`. Esto permite reproducir el análisis a partir de las observaciones preservadas sin depender de que una fuente web siga devolviendo exactamente el mismo histórico.
+
+La opción `--refresh-ornn` de la etapa 1 descarga una observación nueva a `data/staging/`; no sustituye ni modifica los datos empleados en el trabajo.
+
+## Selección de modelos
+
+La evidencia de la selección de hiperparámetros y de la ponderación diferencial se conserva en `results/model_selection/` y `data/frozen/model_selection_validation/`. El repositorio de entrega reproduce el experimento final a partir del protocolo metodológico congelado; no reejecuta la búsqueda exploratoria completa de hiperparámetros.
+
+## Documento
+
+El manuscrito se encuentra en `thesis/`. Las figuras y tablas finales se almacenan en `figures/` y `tables/` y se regeneran con:
+
+```powershell
+python main.py --outputs
+```
+
+Los datasets congelados, los checkpoints y los resultados finales deben permanecer sin modificaciones para conservar la evidencia del experimento. Esta edición revisa el PDF y sus fuentes y distingue la política forward histórica de la corrección del valor actual.
+
+## Correcciones y comprobaciones posteriores
+
+Consultar `docs/REPRODUCIBILIDAD.md` para la procedencia de los cuatro scripts recuperados, el mapa de rutas históricas y el entorno verificado. Para reproducir las etapas recuperadas y los diagnósticos nuevos:
+
+```powershell
+python -B checks/reproduce_recovered.py
+python -B checks/forward_pv_diagnostic.py
+```
+
+Los resultados se guardan en `results/reproduced/`; no sustituyen la evidencia congelada. Las tablas principales del manuscrito mantienen los resultados históricos y la corrección de descuento se presenta por separado.

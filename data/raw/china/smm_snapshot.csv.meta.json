@@ -1,0 +1,20 @@
+{
+  "rows": 57,
+  "date_min": "2026-08-26",
+  "date_max": "2026-08-26",
+  "gpu_models": [
+    "4090",
+    "4090D",
+    "5090",
+    "910B",
+    "A10",
+    "A100",
+    "A800",
+    "H100",
+    "H20",
+    "H800",
+    "PRO6000"
+  ],
+  "output": "data\\raw\\china\\smm_snapshot.csv",
+  "note": "Public snapshot only; no historical login/paywall bypass."
+}

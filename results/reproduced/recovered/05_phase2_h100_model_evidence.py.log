@@ -1,0 +1,70 @@
+C:\Users\david\Documents\Codex\2026-09-10\files-mentioned-by-the-user-tfm\work\tfm_compute_thesis_corregido\archive\recovered_scripts\05_phase2_h100_model_evidence.py:36: InterpolationWarning: The test statistic is outside of the range of p-values available in the
+look-up table. The actual p-value is greater than the p-value returned.
+
+  kp = kpss(x, regression=reg, nlags="auto")
+C:\Users\david\Documents\Codex\2026-09-10\files-mentioned-by-the-user-tfm\work\tfm_compute_thesis_corregido\archive\recovered_scripts\05_phase2_h100_model_evidence.py:36: InterpolationWarning: The test statistic is outside of the range of p-values available in the
+look-up table. The actual p-value is smaller than the p-value returned.
+
+  kp = kpss(x, regression=reg, nlags="auto")
+C:\Users\david\Documents\Codex\2026-09-10\files-mentioned-by-the-user-tfm\work\tfm_compute_thesis_corregido\archive\recovered_scripts\05_phase2_h100_model_evidence.py:36: InterpolationWarning: The test statistic is outside of the range of p-values available in the
+look-up table. The actual p-value is greater than the p-value returned.
+
+  kp = kpss(x, regression=reg, nlags="auto")
+C:\Users\david\Documents\Codex\2026-09-10\files-mentioned-by-the-user-tfm\work\tfm_compute_thesis_corregido\archive\recovered_scripts\05_phase2_h100_model_evidence.py:36: InterpolationWarning: The test statistic is outside of the range of p-values available in the
+look-up table. The actual p-value is greater than the p-value returned.
+
+  kp = kpss(x, regression=reg, nlags="auto")
+{
+  "n_obs": 92,
+  "start": "2026-05-26",
+  "end": "2026-08-25",
+  "ar1_full_sample": {
+    "intercept": 0.0849781063545274,
+    "phi": 0.9143957150593753,
+    "phi_95ci": [
+      0.8224755236826755,
+      1.0063159064360752
+    ],
+    "phi_ci_includes_unit_root": true,
+    "kappa_daily_if_stationary": 0.08949185258056552,
+    "half_life_days_if_stationary": 7.745366316290478,
+    "long_run_log_level_if_stationary": 0.9926851957640721,
+    "long_run_price_if_stationary": 2.698470674716594,
+    "r2": 0.8144637346934941
+  },
+  "return_distribution": {
+    "mean": 0.001336023149724561,
+    "std": 0.03170892649825905,
+    "skew": 0.58804199284125,
+    "excess_kurtosis": 0.9927910641560751,
+    "jarque_bera_stat": 7.967695065336173,
+    "jarque_bera_p": 0.01861388385924993
+  },
+  "arch_lm_on_ar1_residuals": {
+    "lm_stat": 10.221969516305444,
+    "lm_p": 0.06918466565607591,
+    "f_stat": 2.1582972164482297,
+    "f_p": 0.06692438893247811
+  },
+  "one_step_expanding_cv": {
+    "initial_train": 45,
+    "n_forecasts": 47,
+    "rw_rmse": 0.03208600956187505,
+    "ar1_rmse": 0.03160618030979922,
+    "rmse_improvement_ar1_pct": 1.4954469522005374,
+    "rw_mae": 0.02466110682052069,
+    "ar1_mae": 0.02383811620545189,
+    "mae_improvement_ar1_pct": 3.3372006417164695,
+    "hac_test_sq_loss_diff_rw_minus_ar1": {
+      "mean": 3.056137582919751e-05,
+      "t": 1.4573004740619575,
+      "p": 0.14503345604057813
+    },
+    "hac_test_abs_loss_diff_rw_minus_ar1": {
+      "mean": 0.0008229906150687954,
+      "t": 1.8614065624165947,
+      "p": 0.06268678455713149
+    }
+  },
+  "interpretation_guardrail": "Do not select a pricing measure from these historical P diagnostics alone. They only inform the physical-dynamics baseline/model-risk choice."
+}

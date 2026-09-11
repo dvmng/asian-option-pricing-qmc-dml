@@ -1,0 +1,16 @@
+{
+  "n_obs": 92,
+  "dt_years": 0.0027397260273972603,
+  "intercept": 0.0849781063545274,
+  "phi": 0.9143957150593753,
+  "residual_std": 0.031290320343073004,
+  "kappa_p": 32.66452619190642,
+  "theta_p_log": 0.9926851957640721,
+  "long_run_price_p": 2.698470674716594,
+  "sigma_p": 0.6247403836973325,
+  "half_life_days": 7.745366316290478,
+  "start": "2026-05-26",
+  "end": "2026-08-25",
+  "measure": "P (physical/historical)",
+  "guardrail": "These parameters are not automatically pricing-measure Q parameters."
+}

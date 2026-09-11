@@ -1,0 +1,42 @@
+{
+  "status": "PHASE4E_DESCRIPTIVE_ONLY_NO_RETRAINING",
+  "input_file": "data\\processed\\compute_market\\global\\ornn_gpu_panel_long.csv",
+  "primary_gpu": "H100 SXM",
+  "expected_gpus": [
+    "H100 SXM",
+    "H200",
+    "A100 SXM4",
+    "RTX 5090",
+    "B200"
+  ],
+  "observed_gpus": [
+    "A100 SXM4",
+    "B200",
+    "H100 SXM",
+    "H200",
+    "RTX 5090"
+  ],
+  "missing_expected_gpus": [],
+  "unexpected_gpus": [],
+  "total_rows": 460,
+  "rows_by_gpu": {
+    "A100 SXM4": 92,
+    "B200": 92,
+    "H100 SXM": 92,
+    "H200": 92,
+    "RTX 5090": 92
+  },
+  "common_price_dates": 92,
+  "common_return_dates": 91,
+  "annualization_days": 365.0,
+  "ar1_definition": "log(P_t)=alpha+phi*log(P_{t-1})+epsilon_t",
+  "oos_comparison": "fit first 80% of AR1 pairs once; evaluate last 20%; benchmark is log-price random walk",
+  "frozen_protocol_note": "No Phase 2-4 calibration, bootstrap band, dataset, lambda, architecture, checkpoint, test result or prediction is changed.",
+  "figures": [
+    "results\\phase4e_ornn_multigpu\\figures\\01_ornn_gpu_price_levels.png",
+    "results\\phase4e_ornn_multigpu\\figures\\02_ornn_gpu_base100.png",
+    "results\\phase4e_ornn_multigpu\\figures\\03_ornn_gpu_annualized_volatility.png",
+    "results\\phase4e_ornn_multigpu\\figures\\04_ornn_gpu_return_correlation.png"
+  ],
+  "findings_file": "results\\phase4e_ornn_multigpu\\phase4e_findings.md"
+}

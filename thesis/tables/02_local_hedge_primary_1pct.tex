@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering
+\caption{Cobertura local de primer orden para un shock spot del 1\%.}
+\label{tab:local_hedge_1pct}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Estrategia & RMSE & MAE & P95 $|e|$ & P99 $|e|$ & Mejora RMSE vs. sin cobertura \\
+\midrule
+Sin cobertura & $1.355\times 10^{-4}$ & $1.200\times 10^{-4}$ & $2.236\times 10^{-4}$ & $2.321\times 10^{-4}$ & -- \\
+MLP & $6.688\times 10^{-6}$ & $4.494\times 10^{-6}$ & $1.343\times 10^{-5}$ & $2.445\times 10^{-5}$ & 95.06\% \\
+DML & $1.058\times 10^{-6}$ & $8.269\times 10^{-7}$ & $2.073\times 10^{-6}$ & $2.876\times 10^{-6}$ & 99.22\% \\
+Oracle RQMC & $3.491\times 10^{-7}$ & $2.624\times 10^{-7}$ & $7.919\times 10^{-7}$ & $8.758\times 10^{-7}$ & 99.74\% \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize
+Nota: resultados agregados sobre $12\,280$ residuos locales por estrategia. Oracle RQMC emplea la Delta de referencia obtenida mediante RQMC.
+La comparación principal del experimento es DML frente a MLP y frente a la posición sin cobertura.
+\end{flushleft}
+\end{table}

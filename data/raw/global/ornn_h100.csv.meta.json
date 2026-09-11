@@ -1,0 +1,7 @@
+{
+  "rows": 92,
+  "start": "2026-05-26",
+  "end": "2026-08-25",
+  "gpu": "H100 SXM",
+  "output": "data\\raw\\global\\ornn_h100.csv"
+}

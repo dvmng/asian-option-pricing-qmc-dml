@@ -1,0 +1,100 @@
+
+=== PHASE 4D: FROZEN-MODEL EXTREME ERROR DIAGNOSTICS ===
+{
+  "status": "PHASE4D_DIAGNOSTIC_ONLY_NO_RETRAINING",
+  "train_size": 65536,
+  "splits": [
+    "test",
+    "reference"
+  ],
+  "prediction_files_discovered": 80,
+  "policy": "Test/reference are already consumed. This phase diagnoses frozen final models only; it must not be used to retune architecture, lambda, epochs or other training hyperparameters."
+}
+
+=== STRONGEST FEATURE ASSOCIATIONS ===
+model_type         error_metric                feature  spearman_rho  abs_spearman_rho    n     split
+       dml delta_abs_error_mean expected_final_avg_K_Q      0.624857          0.624857 1024 reference
+       dml delta_abs_error_mean   expected_moneyness_Q      0.624857          0.624857 1024 reference
+       dml delta_abs_error_mean          theta_q_log_K      0.567520          0.567520 1024 reference
+       dml delta_abs_error_mean                    tau     -0.339156          0.339156 1024 reference
+       dml delta_abs_error_mean    fixed_avg_contrib_K      0.318714          0.318714 1024 reference
+       dml price_abs_error_mean expected_final_avg_K_Q      0.766434          0.766434 1024 reference
+       dml price_abs_error_mean   expected_moneyness_Q      0.766434          0.766434 1024 reference
+       dml price_abs_error_mean          theta_q_log_K      0.670136          0.670136 1024 reference
+       dml price_abs_error_mean    fixed_avg_contrib_K      0.209805          0.209805 1024 reference
+       dml price_abs_error_mean             n_fix_past      0.196575          0.196575 1024 reference
+       mlp delta_abs_error_mean expected_final_avg_K_Q      0.533276          0.533276 1024 reference
+       mlp delta_abs_error_mean   expected_moneyness_Q      0.533276          0.533276 1024 reference
+       mlp delta_abs_error_mean                    tau     -0.506910          0.506910 1024 reference
+       mlp delta_abs_error_mean          theta_q_log_K      0.494755          0.494755 1024 reference
+       mlp delta_abs_error_mean             n_fix_past      0.489838          0.489838 1024 reference
+       mlp price_abs_error_mean expected_final_avg_K_Q      0.679213          0.679213 1024 reference
+       mlp price_abs_error_mean   expected_moneyness_Q      0.679213          0.679213 1024 reference
+       mlp price_abs_error_mean          theta_q_log_K      0.615602          0.615602 1024 reference
+       mlp price_abs_error_mean    fixed_avg_contrib_K      0.294819          0.294819 1024 reference
+       mlp price_abs_error_mean                    tau     -0.287473          0.287473 1024 reference
+       dml delta_abs_error_mean expected_final_avg_K_Q      0.597666          0.597666 8192      test
+       dml delta_abs_error_mean   expected_moneyness_Q      0.597666          0.597666 8192      test
+       dml delta_abs_error_mean          theta_q_log_K      0.551196          0.551196 8192      test
+       dml delta_abs_error_mean                    tau     -0.325733          0.325733 8192      test
+       dml delta_abs_error_mean    fixed_avg_contrib_K      0.305662          0.305662 8192      test
+       dml price_abs_error_mean expected_final_avg_K_Q      0.736579          0.736579 8192      test
+       dml price_abs_error_mean   expected_moneyness_Q      0.736579          0.736579 8192      test
+       dml price_abs_error_mean          theta_q_log_K      0.657613          0.657613 8192      test
+       dml price_abs_error_mean    fixed_avg_contrib_K      0.201702          0.201702 8192      test
+       dml price_abs_error_mean             n_fix_past      0.188332          0.188332 8192      test
+       mlp delta_abs_error_mean expected_final_avg_K_Q      0.521084          0.521084 8192      test
+       mlp delta_abs_error_mean   expected_moneyness_Q      0.521084          0.521084 8192      test
+       mlp delta_abs_error_mean          theta_q_log_K      0.501562          0.501562 8192      test
+       mlp delta_abs_error_mean                    tau     -0.483166          0.483166 8192      test
+       mlp delta_abs_error_mean             n_fix_past      0.465760          0.465760 8192      test
+       mlp price_abs_error_mean expected_final_avg_K_Q      0.637559          0.637559 8192      test
+       mlp price_abs_error_mean   expected_moneyness_Q      0.637559          0.637559 8192      test
+       mlp price_abs_error_mean          theta_q_log_K      0.579655          0.579655 8192      test
+       mlp price_abs_error_mean    fixed_avg_contrib_K      0.321429          0.321429 8192      test
+       mlp price_abs_error_mean                    tau     -0.310749          0.310749 8192      test
+
+=== MSE CONCENTRATION (mean across seeds) ===
+    split model_type target   seed  n_eval  mse_share_top_0.001  mse_share_top_0.005  mse_share_top_0.01  mse_share_top_0.05
+reference        dml  delta 3701.0  1024.0             0.784895             0.875863            0.907320            0.958076
+reference        dml  price 3701.0  1024.0             0.963008             0.976054            0.978578            0.986702
+reference        mlp  delta 3701.0  1024.0             0.844970             0.963840            0.973613            0.989128
+reference        mlp  price 3701.0  1024.0             0.905456             0.988267            0.990911            0.995269
+     test        dml  delta 3701.0  8192.0             0.924696             0.982480            0.986327            0.992958
+     test        dml  price 3701.0  8192.0             0.967760             0.991324            0.992329            0.994993
+     test        mlp  delta 3701.0  8192.0             0.854388             0.962644            0.973908            0.988955
+     test        mlp  price 3701.0  8192.0             0.977122             0.994399            0.995653            0.997724
+
+=== ERROR BY EXPECTED EXERCISE-BOUNDARY DISTANCE ===
+model_type boundary_distance_bin    n  price_abs_error_mean  price_abs_error_p95  delta_abs_error_mean  delta_abs_error_p95     split
+       dml              <=0.0025  280              0.000352             0.000193              0.000523             0.000518      test
+       dml        (0.0025,0.005]  294              0.000096             0.000192              0.000225             0.000709      test
+       dml          (0.005,0.01]  568              0.000091             0.000185              0.000211             0.000600      test
+       dml          (0.01,0.025] 1656              0.000102             0.000196              0.000210             0.000448      test
+       dml          (0.025,0.05] 2176              0.000100             0.000207              0.000169             0.000392      test
+       dml           (0.05,0.10] 2337              0.000174             0.000202              0.000250             0.000370      test
+       dml                 >0.10  881              0.000156             0.000221              0.000156             0.000299      test
+       mlp              <=0.0025  280              0.000117             0.000237              0.001411             0.003127      test
+       mlp        (0.0025,0.005]  294              0.000088             0.000204              0.001210             0.003175      test
+       mlp          (0.005,0.01]  568              0.000088             0.000206              0.001134             0.002818      test
+       mlp          (0.01,0.025] 1656              0.000097             0.000206              0.001339             0.003107      test
+       mlp          (0.025,0.05] 2176              0.000092             0.000215              0.001337             0.003157      test
+       mlp           (0.05,0.10] 2337              0.000171             0.000200              0.001280             0.002614      test
+       mlp                 >0.10  881              0.000154             0.000180              0.000679             0.001864      test
+       dml              <=0.0025   25              0.000099             0.000187              0.000229             0.000840 reference
+       dml        (0.0025,0.005]   33              0.000085             0.000166              0.000188             0.000613 reference
+       dml          (0.005,0.01]   77              0.000096             0.000183              0.000250             0.000886 reference
+       dml          (0.01,0.025]  209              0.000083             0.000189              0.000180             0.000460 reference
+       dml          (0.025,0.05]  261              0.000200             0.000203              0.000309             0.000368 reference
+       dml           (0.05,0.10]  314              0.000086             0.000218              0.000118             0.000389 reference
+       dml                 >0.10  105              0.000096             0.000212              0.000156             0.000425 reference
+       mlp              <=0.0025   25              0.000083             0.000147              0.001098             0.002496 reference
+       mlp        (0.0025,0.005]   33              0.000086             0.000197              0.001157             0.003050 reference
+       mlp          (0.005,0.01]   77              0.000094             0.000222              0.001254             0.003576 reference
+       mlp          (0.01,0.025]  209              0.000079             0.000232              0.001091             0.002992 reference
+       mlp          (0.025,0.05]  261              0.000274             0.000230              0.002373             0.003146 reference
+       mlp           (0.05,0.10]  314              0.000069             0.000214              0.001110             0.002853 reference
+       mlp                 >0.10  105              0.000088             0.000139              0.000761             0.002731 reference
+
+Saved diagnostics -> C:\Users\david\Documents\Codex\2026-09-10\files-mentioned-by-the-user-tfm\work\tfm_compute_thesis_corregido\results\reproduced\recovered\extreme_errors
+PHASE 4D DIAGNOSTIC COMPLETED (NO RETRAINING).

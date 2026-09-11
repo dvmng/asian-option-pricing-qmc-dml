@@ -1,0 +1,84 @@
+[
+  {
+    "role": "lambda_config",
+    "historical": "results\\phase4b_lambda\\selected_compute_dml_config.json",
+    "sha256": "3712a23ee9b54621b423e2d936b22b7c4181454abde6faae5bfa9d4393dceed0",
+    "current": [
+      "results/model_selection/selected_dml_config.json"
+    ]
+  },
+  {
+    "role": "data_manifest",
+    "historical": "data\\phase4_final\\MANIFEST.json",
+    "sha256": "2ebd606b82a45ec9b3bf4eeaa846c6153eca978cf9c527c0cbebcfd7f9781415",
+    "current": [
+      "protocols/dataset_manifest.json",
+      "data/frozen/pricing_dataset/MANIFEST.json"
+    ]
+  },
+  {
+    "role": "data_config",
+    "historical": "data\\phase4_final\\config.json",
+    "sha256": "5f6986cf7e244a8b9f9cefb2e353774cc762a6d114da67cf66b80119ab0dece4",
+    "current": [
+      "protocols/dataset_config.json",
+      "data/frozen/pricing_dataset/config.json"
+    ]
+  },
+  {
+    "role": "train",
+    "historical": "data\\phase4_final\\train.csv.gz",
+    "sha256": "6fd35be56963504b441091422d3ca4ecc1451b85539ec574b6f7ea3b0b228bf0",
+    "current": [
+      "data/frozen/pricing_dataset/train.csv.gz"
+    ]
+  },
+  {
+    "role": "val",
+    "historical": "data\\phase4_final\\val.csv.gz",
+    "sha256": "70aeae76aa9e32a226553bae4af51c0ab59e4695355cfeac01c9ae56898df1ef",
+    "current": [
+      "data/frozen/pricing_dataset/val.csv.gz"
+    ]
+  },
+  {
+    "role": "test",
+    "historical": "data\\phase4_final\\test.csv.gz",
+    "sha256": "96f5302cd58829ad51f9f17a88eaeda03c498113f1e9b995feea161897bc64af",
+    "current": [
+      "data/frozen/pricing_dataset/test.csv.gz"
+    ]
+  },
+  {
+    "role": "reference",
+    "historical": "data\\phase4_final\\reference.csv.gz",
+    "sha256": "36d4710eca192eb3335c3389211d5c89ebddd9c2fd8979ff98eb57038162e526",
+    "current": [
+      "data/frozen/pricing_dataset/reference.csv.gz"
+    ]
+  },
+  {
+    "role": "train_order",
+    "historical": "data\\phase4_ml\\train_order.npy",
+    "sha256": "f405c14d2d3bdd756099f9c54ec757a7bb237bca7b147b586629a30c573e3b09",
+    "current": [
+      "data/frozen/ml_prepared/train_order.npy"
+    ]
+  },
+  {
+    "role": "prepare_audit",
+    "historical": "data\\phase4_ml\\prepare_audit.json",
+    "sha256": "d4e60ba2db8e1326f22dab3d484ad290385897bbe30cfae6d262377135cf7a9e",
+    "current": [
+      "data/frozen/ml_prepared/prepare_audit.json"
+    ]
+  },
+  {
+    "role": "ml_protocol",
+    "historical": "results\\FROZEN_COMPUTE_ML_PROTOCOL.json",
+    "sha256": "3d36d1ace0db36494cb75207e1e2439b4cd3a45163d640b7501130670c7a1fcd",
+    "current": [
+      "protocols/ml_protocol.json"
+    ]
+  }
+]

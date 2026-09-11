@@ -1,0 +1,27 @@
+{
+  "history_file": "data\\raw\\china\\smm_history_full.csv",
+  "snapshot_file": "data\\raw\\china\\smm_snapshot.csv",
+  "n_dates": 49,
+  "start": "2026-06-20",
+  "end": "2026-08-26",
+  "n_series": 57,
+  "n_named_headers_initially": 56,
+  "blank_header_positions": [
+    34
+  ],
+  "inferred_headers": {
+    "34": "SMM-5090-32G-单卡-全国-包月-零售"
+  },
+  "n_long_rows": 2793,
+  "n_observed_rows": 2679,
+  "range_consistency_failures_all_series": 1,
+  "range_consistency_failures_h100": 0,
+  "latest_snapshot_date": "2026-08-26",
+  "snapshot_rows": 57,
+  "latest_history_observed_series": 57,
+  "snapshot_exact_numeric_matches": 57,
+  "snapshot_merge_both": 57,
+  "status": "PASS_WITH_SOURCE_DATA_WARNINGS",
+  "warning": "At least one source row has average price outside its reported low/high range. These rows are preserved and exported as source-data anomalies; no H100 anomaly is allowed for the core China series.",
+  "pass": true
+}

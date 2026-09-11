@@ -1,0 +1,107 @@
+{
+  "status": "PHASE5B1_FINAL_COMPLETED",
+  "protocol_hash_sha256": "54908510cab96229ea205373d489de53179af03da8961358afbb8466c2a0a76f",
+  "protocol": {
+    "status": "FROZEN_BEFORE_PHASE5B1_FINAL",
+    "experiment": "Phase 5B.1 final local economic hedge effectiveness",
+    "primary_shock": 0.01,
+    "robustness_shocks": [
+      0.005,
+      0.02
+    ],
+    "directions": [
+      "down",
+      "up"
+    ],
+    "physical_blocks": 4,
+    "physical_paths_per_block": 128,
+    "physical_seeds": [
+      9101,
+      9201,
+      9301,
+      9401
+    ],
+    "pricing_seed_bases": [
+      21000000,
+      31000000,
+      41000000,
+      51000000
+    ],
+    "rqmc_paths_per_state": 4096,
+    "rqmc_replications": 2,
+    "pricing_measure": "Q0 provisional",
+    "physical_measure": "frozen physical-P Log-OU",
+    "state_rule": "one deterministic interior state per fixing interval; midpoint except final interval at tau_min+0.01",
+    "model_train_size": 65536,
+    "model_seeds": [
+      1701,
+      2701,
+      3701,
+      4701,
+      5701
+    ],
+    "mlp_dml_aggregation": "five-seed ensemble mean",
+    "common_random_numbers_base_up_down": true,
+    "no_clipping": true,
+    "uses_phase4_test_or_reference_states": false,
+    "retraining_allowed": false,
+    "post_test_calendar_feature_addition_allowed": false
+  },
+  "scenario": {
+    "S0_K": 1.0,
+    "r": 0.03,
+    "kappa_q": 32.66452619190628,
+    "theta_q_log_K": 0.0,
+    "sigma_q": 0.6247403836973323,
+    "name": "Q0_ATM_LOCAL_HEDGE_FINAL"
+  },
+  "total_valid_local_states": 6140,
+  "total_local_residual_observations": 147360,
+  "valid_states_by_block": {
+    "1": 1536,
+    "2": 1533,
+    "3": 1535,
+    "4": 1536
+  },
+  "fd_check_by_block": [
+    {
+      "block_id": 1,
+      "n_states": 1536,
+      "mean_abs_diff": 2.989478989455921e-06,
+      "median_abs_diff": 2.176973556856877e-06,
+      "p95_abs_diff": 8.65524124898931e-06,
+      "max_abs_diff": 1.84814391204699e-05
+    },
+    {
+      "block_id": 2,
+      "n_states": 1533,
+      "mean_abs_diff": 3.175691727608549e-06,
+      "median_abs_diff": 2.3432525632569035e-06,
+      "p95_abs_diff": 8.826989917776186e-06,
+      "max_abs_diff": 1.7103689992834653e-05
+    },
+    {
+      "block_id": 3,
+      "n_states": 1535,
+      "mean_abs_diff": 3.2806612445710584e-06,
+      "median_abs_diff": 2.4303238038460295e-06,
+      "p95_abs_diff": 9.577300254519532e-06,
+      "max_abs_diff": 1.9495913826798536e-05
+    },
+    {
+      "block_id": 4,
+      "n_states": 1536,
+      "mean_abs_diff": 3.216595764755288e-06,
+      "median_abs_diff": 2.359531202884152e-06,
+      "p95_abs_diff": 9.209009458895079e-06,
+      "max_abs_diff": 2.3867697884332253e-05
+    }
+  ],
+  "figures": [
+    "results\\phase5b1_local_hedge_final\\figures\\01_final_local_hedge_rmse_by_shock.png",
+    "results\\phase5b1_local_hedge_final\\figures\\02_final_local_hedge_rmse_by_fixing.png",
+    "results\\phase5b1_local_hedge_final\\figures\\03_final_local_hedge_block_stability.png"
+  ],
+  "interpretation": "Primary economic validation of local first-order risk offset. Not a self-financing spot hedge and not the dynamic forward stress test.",
+  "frozen_phase4_note": "No Phase-4 model, dataset, lambda, architecture, checkpoint, test/reference result or feature set was modified."
+}

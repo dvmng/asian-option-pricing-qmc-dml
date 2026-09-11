@@ -1,0 +1,10 @@
+{
+  "n_h100_quotes": 3,
+  "n_dates": 1,
+  "dates": [
+    "2026-08-26"
+  ],
+  "homogeneous_groups": 2,
+  "primary_rule": "Do not aggregate heterogeneous contract types. Prefer one exact SMM index_id with history, or a regional composite only across identical memory/delivery/contract specifications.",
+  "current_status": "Snapshot is suitable for cross-sectional validation, not time-series calibration or a historical China H100 index."
+}

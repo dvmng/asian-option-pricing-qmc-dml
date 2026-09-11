@@ -1,0 +1,9 @@
+series,test,regression,statistic,p_value,null
+log_price,ADF,c,-1.8504518780473593,0.3557167268881304,unit root
+log_price,KPSS,c,0.2727740881865446,0.1,stationary
+log_price,ADF,ct,-1.9053298649465773,0.6519027146154683,unit root
+log_price,KPSS,ct,0.23759424027060733,0.01,trend-stationary
+log_return,ADF,c,-8.112903756644277,1.21236263478829e-12,unit root
+log_return,KPSS,c,0.09190227993284122,0.1,stationary
+log_return,ADF,ct,-6.490066188191477,1.940385149602555e-07,unit root
+log_return,KPSS,ct,0.04793005133966756,0.1,trend-stationary

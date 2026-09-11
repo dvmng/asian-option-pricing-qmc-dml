@@ -1,0 +1,178 @@
+[
+  {
+    "candidate_rank": 1,
+    "screen_trial": 1,
+    "screen_objective": 0.015271030366420746,
+    "architecture_signature": [
+      "plain",
+      128,
+      "gelu",
+      "depth",
+      5
+    ],
+    "params": {
+      "backbone": "plain",
+      "width": 128,
+      "activation": "gelu",
+      "optimizer": "adamw",
+      "learning_rate": 0.0029171912777973845,
+      "scheduler": "constant",
+      "depth": 5,
+      "weight_decay": 9.016821807906862e-05
+    }
+  },
+  {
+    "candidate_rank": 2,
+    "screen_trial": 27,
+    "screen_objective": 0.015335394069552422,
+    "architecture_signature": [
+      "residual",
+      96,
+      "softplus",
+      "n_blocks",
+      3
+    ],
+    "params": {
+      "backbone": "residual",
+      "width": 96,
+      "activation": "softplus",
+      "optimizer": "adamw",
+      "learning_rate": 0.00436067129790408,
+      "scheduler": "constant",
+      "n_blocks": 3,
+      "weight_decay": 0.00027491308659767207
+    }
+  },
+  {
+    "candidate_rank": 3,
+    "screen_trial": 64,
+    "screen_objective": 0.01536675076931715,
+    "architecture_signature": [
+      "plain",
+      128,
+      "silu",
+      "depth",
+      4
+    ],
+    "params": {
+      "backbone": "plain",
+      "width": 128,
+      "activation": "silu",
+      "optimizer": "adam",
+      "learning_rate": 0.0015078763039060694,
+      "scheduler": "onecycle",
+      "depth": 4,
+      "weight_decay": 0.0
+    }
+  },
+  {
+    "candidate_rank": 4,
+    "screen_trial": 44,
+    "screen_objective": 0.015383664052933455,
+    "architecture_signature": [
+      "plain",
+      128,
+      "silu",
+      "depth",
+      3
+    ],
+    "params": {
+      "backbone": "plain",
+      "width": 128,
+      "activation": "silu",
+      "optimizer": "adamw",
+      "learning_rate": 0.0027726767061636588,
+      "scheduler": "onecycle",
+      "depth": 3,
+      "weight_decay": 9.507415391217449e-07
+    }
+  },
+  {
+    "candidate_rank": 5,
+    "screen_trial": 4,
+    "screen_objective": 0.015383954159915447,
+    "architecture_signature": [
+      "residual",
+      128,
+      "silu",
+      "n_blocks",
+      3
+    ],
+    "params": {
+      "backbone": "residual",
+      "width": 128,
+      "activation": "silu",
+      "optimizer": "adamw",
+      "learning_rate": 0.0019615987173439097,
+      "scheduler": "cosine",
+      "n_blocks": 3,
+      "weight_decay": 6.634059887871314e-07
+    }
+  },
+  {
+    "candidate_rank": 6,
+    "screen_trial": 9,
+    "screen_objective": 0.015398426912724972,
+    "architecture_signature": [
+      "plain",
+      192,
+      "silu",
+      "depth",
+      3
+    ],
+    "params": {
+      "backbone": "plain",
+      "width": 192,
+      "activation": "silu",
+      "optimizer": "adam",
+      "learning_rate": 0.002274632637276463,
+      "scheduler": "constant",
+      "depth": 3,
+      "weight_decay": 0.0
+    }
+  },
+  {
+    "candidate_rank": 7,
+    "screen_trial": 60,
+    "screen_objective": 0.015422635711729527,
+    "architecture_signature": [
+      "plain",
+      192,
+      "silu",
+      "depth",
+      4
+    ],
+    "params": {
+      "backbone": "plain",
+      "width": 192,
+      "activation": "silu",
+      "optimizer": "adam",
+      "learning_rate": 0.0013213087208607294,
+      "scheduler": "cosine",
+      "depth": 4,
+      "weight_decay": 0.0
+    }
+  },
+  {
+    "candidate_rank": 8,
+    "screen_trial": 24,
+    "screen_objective": 0.015430053696036339,
+    "architecture_signature": [
+      "residual",
+      96,
+      "silu",
+      "n_blocks",
+      3
+    ],
+    "params": {
+      "backbone": "residual",
+      "width": 96,
+      "activation": "silu",
+      "optimizer": "adamw",
+      "learning_rate": 0.0005445251909716221,
+      "scheduler": "cosine",
+      "n_blocks": 3,
+      "weight_decay": 8.119645881382901e-05
+    }
+  }
+]

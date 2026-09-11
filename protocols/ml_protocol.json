@@ -1,0 +1,149 @@
+{
+  "status": "FROZEN_BEFORE_COMPUTE_FINAL_TRAINING",
+  "frozen_at_utc": "2026-08-26T19:16:00.391036+00:00",
+  "research_design": "Paired residual MLP versus Differential Machine Learning on the seven-input Log-OU compute Asian-option surrogate. Architecture, optimizer, scheduler, sample sizes and seeds are shared. DML differs only by the preselected differential supervision weight.",
+  "inputs": [
+    "spot_K",
+    "fixed_avg_contrib_K",
+    "tau",
+    "r",
+    "kappa_q",
+    "theta_q_log_K",
+    "sigma_q"
+  ],
+  "shared_model_params": {
+    "backbone": "residual",
+    "width": 128,
+    "n_blocks": 3,
+    "activation": "silu",
+    "optimizer": "adamw",
+    "learning_rate": 0.0019615987173439097,
+    "scheduler": "cosine",
+    "weight_decay": 6.634059887871314e-07
+  },
+  "dml_lambda_delta": 0.25,
+  "canonical_derivative_rms_weighting": true,
+  "batch_size": 1024,
+  "final_max_epochs": 3000,
+  "checkpoint_metric": "val_price_mse_std",
+  "checkpoint_split": "full val (8192 states), after lambda selection was frozen",
+  "final_train_sizes": [
+    1024,
+    4096,
+    16384,
+    65536
+  ],
+  "final_training_seeds": [
+    1701,
+    2701,
+    3701,
+    4701,
+    5701
+  ],
+  "expected_parameter_count": 100225,
+  "no_early_stopping": true,
+  "paired_initialization_and_shuffle": true,
+  "test_reference_policy": "test/reference were generated and hashed in Phase 4A before this protocol freeze but were not used in Phase 4B lambda selection and must not be read by the final training runner; they are first consumed by the final evaluator.",
+  "source_hashes": {
+    "lambda_config": {
+      "path": "results\\phase4b_lambda\\selected_compute_dml_config.json",
+      "sha256": "3712a23ee9b54621b423e2d936b22b7c4181454abde6faae5bfa9d4393dceed0"
+    },
+    "data_manifest": {
+      "path": "data\\phase4_final\\MANIFEST.json",
+      "sha256": "2ebd606b82a45ec9b3bf4eeaa846c6153eca978cf9c527c0cbebcfd7f9781415"
+    },
+    "data_config": {
+      "path": "data\\phase4_final\\config.json",
+      "sha256": "5f6986cf7e244a8b9f9cefb2e353774cc762a6d114da67cf66b80119ab0dece4"
+    },
+    "train": {
+      "path": "data\\phase4_final\\train.csv.gz",
+      "sha256": "6fd35be56963504b441091422d3ca4ecc1451b85539ec574b6f7ea3b0b228bf0"
+    },
+    "val": {
+      "path": "data\\phase4_final\\val.csv.gz",
+      "sha256": "70aeae76aa9e32a226553bae4af51c0ab59e4695355cfeac01c9ae56898df1ef"
+    },
+    "test": {
+      "path": "data\\phase4_final\\test.csv.gz",
+      "sha256": "96f5302cd58829ad51f9f17a88eaeda03c498113f1e9b995feea161897bc64af"
+    },
+    "reference": {
+      "path": "data\\phase4_final\\reference.csv.gz",
+      "sha256": "36d4710eca192eb3335c3389211d5c89ebddd9c2fd8979ff98eb57038162e526"
+    },
+    "train_order": {
+      "path": "data\\phase4_ml\\train_order.npy",
+      "sha256": "f405c14d2d3bdd756099f9c54ec757a7bb237bca7b147b586629a30c573e3b09"
+    },
+    "prepare_audit": {
+      "path": "data\\phase4_ml\\prepare_audit.json",
+      "sha256": "d4e60ba2db8e1326f22dab3d484ad290385897bbe30cfae6d262377135cf7a9e"
+    }
+  },
+  "phase4a_manifest": {
+    "config_sha256": "5f6986cf7e244a8b9f9cefb2e353774cc762a6d114da67cf66b80119ab0dece4",
+    "files": {
+      "train.csv.gz": "6fd35be56963504b441091422d3ca4ecc1451b85539ec574b6f7ea3b0b228bf0",
+      "val.csv.gz": "70aeae76aa9e32a226553bae4af51c0ab59e4695355cfeac01c9ae56898df1ef",
+      "test.csv.gz": "96f5302cd58829ad51f9f17a88eaeda03c498113f1e9b995feea161897bc64af",
+      "reference.csv.gz": "36d4710eca192eb3335c3389211d5c89ebddd9c2fd8979ff98eb57038162e526"
+    }
+  },
+  "phase4b_selected_lambda": {
+    "status": "SELECTED_COMPUTE_DML_LAMBDA",
+    "shared_model_params": {
+      "backbone": "residual",
+      "width": 128,
+      "n_blocks": 3,
+      "activation": "silu",
+      "optimizer": "adamw",
+      "learning_rate": 0.0019615987173439097,
+      "scheduler": "cosine",
+      "weight_decay": 6.634059887871314e-07
+    },
+    "expected_parameter_count_7_inputs": 100225,
+    "lambda_grid": [
+      0.25,
+      0.5,
+      1.0,
+      2.0,
+      4.0
+    ],
+    "lambda_seeds": [
+      1701,
+      3701,
+      5701
+    ],
+    "lambda_train_size": 8192,
+    "lambda_max_epochs": 1500,
+    "checkpoint_role": "first disjoint validation half after deterministic permutation; epoch selected by standardized price MSE only",
+    "lambda_selection_role": "second disjoint validation half; never used to choose training epoch",
+    "lambda_selection_metric": "0.5*standardized_price_MSE + 0.5*RMS-weighted_standardized_Delta_MSE",
+    "selection_rule": "minimum mean balanced score on disjoint lambda-selection validation set",
+    "selected_lambda_delta": 0.25,
+    "best_lambda_by_mean": 0.25,
+    "best_mean_balanced_score": 0.16184600039074817,
+    "best_standard_error": 0.003839419243784611,
+    "one_se_threshold": 0.1656854196345328,
+    "legacy_benchmark_lambda": 4.0,
+    "final_training_seeds": [
+      1701,
+      2701,
+      3701,
+      4701,
+      5701
+    ],
+    "final_train_sizes": [
+      1024,
+      4096,
+      16384,
+      65536
+    ],
+    "final_max_epochs": 3000,
+    "final_checkpoint_metric": "val_price_mse_std",
+    "no_architecture_reoptimization": true,
+    "no_optimizer_reoptimization": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "status": "PHASE4D_DIAGNOSTIC_ONLY_NO_RETRAINING",
+  "train_size": 65536,
+  "splits": [
+    "test",
+    "reference"
+  ],
+  "prediction_files_discovered": 80,
+  "policy": "Test/reference are already consumed. This phase diagnoses frozen final models only; it must not be used to retune architecture, lambda, epochs or other training hyperparameters."
+}

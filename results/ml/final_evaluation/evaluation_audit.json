@@ -1,0 +1,16 @@
+{
+  "protocol_path": "results\\FROZEN_COMPUTE_ML_PROTOCOL.json",
+  "protocol_sha256": "3d36d1ace0db36494cb75207e1e2439b4cd3a45163d640b7501130670c7a1fcd",
+  "results_dir": "results\\compute_ml_final",
+  "data_dir": "data\\phase4_final",
+  "splits": [
+    "test",
+    "reference"
+  ],
+  "n_completed_runs": 40,
+  "expected_runs": 40,
+  "expected_parameter_count": 100225,
+  "evaluation_device": "cuda",
+  "torch_version": "2.12.1+cu126",
+  "save_predictions": true
+}

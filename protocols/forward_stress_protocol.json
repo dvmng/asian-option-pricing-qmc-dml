@@ -1,0 +1,71 @@
+{
+  "status": "FROZEN_BEFORE_PHASE5B2_FINAL",
+  "experiment": "Phase 5B.2 final dynamic monthly compute-forward hedge stress test",
+  "role": "secondary dynamic stress test after Phase 5B.1 local hedge validation",
+  "pricing_measure": "Q0 provisional",
+  "physical_measure": "frozen physical-P Log-OU",
+  "scenario": {
+    "S0_K": 1.0,
+    "r": 0.03,
+    "kappa_q": 32.66452619190628,
+    "theta_q_log_K": 0.0,
+    "sigma_q": 0.6247403836973323
+  },
+  "hedge_instrument": "zero-cost one-period model-implied compute forward settling at next scheduled Asian fixing",
+  "rebalancing": "monthly, immediately after each of the scheduled fixing boundaries",
+  "physical_blocks": 4,
+  "physical_paths_per_block": 512,
+  "physical_seeds": [
+    12101,
+    12201,
+    12301,
+    12401
+  ],
+  "oracle_pricing_seed_bases": [
+    61000000,
+    71000000,
+    81000000,
+    91000000
+  ],
+  "oracle_delta_paths_per_state": 4096,
+  "oracle_delta_replications": 1,
+  "premium_paths_per_replication": 8192,
+  "premium_replications": 8,
+  "model_train_size": 65536,
+  "model_seeds": [
+    1701,
+    2701,
+    3701,
+    4701,
+    5701
+  ],
+  "mlp_dml_aggregation": "five-seed ensemble mean",
+  "common_initial_premium": "single high-accuracy RQMC premium shared by all strategies and blocks",
+  "no_clipping": true,
+  "common_valid_domain_sample_within_each_block": true,
+  "minimum_required_ml_domain_coverage_per_block": 0.9,
+  "primary_metrics": [
+    "terminal hedge-error RMSE",
+    "terminal hedge-error MAE",
+    "P95/P99 absolute hedge error",
+    "seller-shortfall VaR/CVaR 95/99"
+  ],
+  "tail_diagnostics": [
+    "top 1 percent share of squared error",
+    "top 5 percent share of squared error"
+  ],
+  "paired_diagnostics": [
+    "DML abs error < MLP abs error",
+    "DML abs error < no-hedge abs error",
+    "MLP abs error < no-hedge abs error",
+    "oracle abs error < no-hedge abs error"
+  ],
+  "step_diagnostics": [
+    "Delta RMSE vs RQMC by remaining fixings",
+    "terminal-valued one-period hedge P&L discrepancy vs RQMC by remaining fixings"
+  ],
+  "retraining_allowed": false,
+  "feature_changes_allowed": false,
+  "post_result_instrument_changes_allowed_within_phase5b2": false,
+  "protocol_hash_sha256": "d902bc75ce2bbb034be7dcd2085699c10a1ce49d8044e29007e7f36434b9f133"
+}

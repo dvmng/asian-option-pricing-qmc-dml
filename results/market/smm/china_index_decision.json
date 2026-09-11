@@ -1,0 +1,11 @@
+{
+  "status": "FROZEN_CHINA_SERIES_SELECTION",
+  "primary_china_h100": "SMM-H100-80G-整机-西部-包月",
+  "robustness_regional_h100": "SMM-H100-80G-整机-长三角-包月",
+  "cross_section_reference_h100": "SMM-H100-80G-单卡-全国-短期-零售",
+  "primary_reason": "West whole-server monthly is contract-homogeneous and has the richest time variation among the two regional monthly H100 series: 43 observations, 11 unique daily average levels and 10 non-zero log-change days.",
+  "robustness_reason": "Yangtze whole-server monthly has the same contract/hardware form and 43 observations, but fewer distinct levels (6) and fewer change days (5); it is retained to quantify regional basis/model risk.",
+  "national_short_term_reason": "The nationwide single-card short-term retail series is retained only as a cross-sectional/contract-basis reference because it is extremely sticky: zero-change share=0.979167.",
+  "pricing_calibration_guardrail": "Do not replace the 92-day Ornn physical Log-OU calibration with these shorter SMM regional histories. Use SMM for China empirical application, regional/global basis evidence and robustness.",
+  "composite_guardrail": "Do not create a weighted China composite yet. Primary and robustness series remain separate because regional return innovations are not assumed identical and no defensible market-share weights are available."
+}

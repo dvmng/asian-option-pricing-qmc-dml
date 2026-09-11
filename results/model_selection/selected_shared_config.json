@@ -1,0 +1,34 @@
+{
+  "selection_rule": "one-standard-error on multi-seed val_select mean price MSE; then parameter count; then training time",
+  "best_mean_price_mse": 0.0030188742481792965,
+  "best_standard_error": 8.134556259878866e-05,
+  "one_se_threshold": 0.0031002198107780853,
+  "selected_candidate_rank": 5,
+  "selected_screen_trial": 4,
+  "selected_architecture_signature": [
+    "residual",
+    128,
+    "silu",
+    "n_blocks",
+    3
+  ],
+  "selected_params": {
+    "backbone": "residual",
+    "width": 128,
+    "activation": "silu",
+    "optimizer": "adamw",
+    "learning_rate": 0.0019615987173439097,
+    "scheduler": "cosine",
+    "n_blocks": 3,
+    "weight_decay": 6.634059887871314e-07
+  },
+  "selected_parameter_count": 99969,
+  "selected_price_mse_mean": 0.0030188742481792965,
+  "confirm_seeds": [
+    2701,
+    3701,
+    4701
+  ],
+  "confirm_train_size": 16384,
+  "confirm_max_epochs": 3000
+}

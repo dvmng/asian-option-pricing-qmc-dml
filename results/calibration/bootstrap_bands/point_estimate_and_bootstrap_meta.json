@@ -1,0 +1,21 @@
+{
+  "intercept": 0.0849781063545271,
+  "phi": 0.9143957150593757,
+  "kappa": 32.66452619190628,
+  "theta_log": 0.9926851957640724,
+  "long_run_price": 2.698470674716595,
+  "residual_std": 0.031290320343073004,
+  "sigma": 0.6247403836973323,
+  "half_life_days": 7.745366316290509,
+  "n_boot_requested": 20000,
+  "n_stationary_bootstrap": 19994,
+  "n_nonstationary_discarded": 6,
+  "nonstationary_share": 0.0003,
+  "seed": 20260826,
+  "bootstrap_type": "residual bootstrap of fitted AR(1) in log price; centered residuals; AR(1) re-estimated on every bootstrap path",
+  "important_interpretation": "Percentile bands are used as surrogate-model DESIGN RANGES, not as formal confidence intervals for pricing-measure Q parameters.",
+  "n_obs": 92,
+  "start": "2026-05-26",
+  "end": "2026-08-25",
+  "dt_years": 0.0027397260273972603
+}

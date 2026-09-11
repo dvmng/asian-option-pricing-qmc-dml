@@ -1,0 +1,18 @@
+{
+  "status": "PHASE4D1_DIAGNOSTIC_ONLY",
+  "n_fixings": 12,
+  "interpretation": "Distance is measured from valuation tau to the nearest scheduled monthly fixing boundary k/N. This is a post-hoc diagnostic of frozen models and must not be used to retune them.",
+  "key_test_dml_delta_top50": {
+    "split": "test",
+    "model_type": "dml",
+    "error_metric": "delta_abs_error_mean",
+    "top_n": 50,
+    "all_scenarios_median_distance_days": 7.537032364091527,
+    "top_median_distance_days": 0.4873969162969568,
+    "top_frac_within_0_5d": 0.52,
+    "top_frac_within_1d": 0.64,
+    "top_frac_within_2d": 0.88,
+    "top_frac_within_3d": 0.92,
+    "spearman_error_vs_distance": -0.16111066805718763
+  }
+}

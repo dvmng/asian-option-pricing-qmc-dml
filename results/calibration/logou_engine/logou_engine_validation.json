@@ -1,0 +1,24 @@
+{
+  "pathwise_delta": 0.10733588916789533,
+  "finite_difference_delta_crn": 0.10733440913822852,
+  "abs_delta_difference": 1.4800296668088242e-06,
+  "delta_validation_pass": true,
+  "replicated_rqmc": {
+    "price_K": 0.03035268592517184,
+    "delta": 0.10750392336207065,
+    "price_se_rep": 8.891787370579301e-06,
+    "delta_se_rep": 0.00010029470825836263,
+    "n_paths": 65536,
+    "n_replications": 8,
+    "pricing_engine": "rqmc"
+  },
+  "exact_transition_moment_check": {
+    "theoretical_mean_log": 0.038912389372461186,
+    "empirical_mean_log": 0.038895664130623314,
+    "mean_abs_error": 1.672524183787133e-05,
+    "theoretical_var_log": 0.005088616123436294,
+    "empirical_var_log": 0.005102214634722261,
+    "var_abs_error": 1.3598511285966772e-05
+  },
+  "guardrail": "Validation parameters are numerical test values, not the final Q calibration."
+}

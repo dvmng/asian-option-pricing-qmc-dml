@@ -1,0 +1,23 @@
+{
+  "required_columns": true,
+  "scenario_ids_unique_global": true,
+  "state_seeds_unique_global": true,
+  "pricing_seeds_unique_global": true,
+  "tau_identity": true,
+  "fixing_count_identity": true,
+  "at_least_one_future_fixing": true,
+  "bounds_S0_K": true,
+  "bounds_spot_K": true,
+  "bounds_tau": true,
+  "bounds_r": true,
+  "bounds_kappa_q": true,
+  "bounds_theta_q_log_K": true,
+  "bounds_sigma_q": true,
+  "past_average_bounds_when_defined": true,
+  "no_past_average_is_nan": true,
+  "zero_fixed_contribution_when_no_past": true,
+  "no_exact_input_duplicate_across_all_rows": true,
+  "finite_price_delta": true,
+  "nonnegative_price": true,
+  "nonnegative_delta": true
+}

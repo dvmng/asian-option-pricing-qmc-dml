@@ -1,0 +1,34 @@
+{
+  "retrieved_at_utc": "2026-08-27T17:04:22.805301+00:00",
+  "requested_gpus": [
+    "H100 SXM",
+    "H200",
+    "A100 SXM4",
+    "RTX 5090",
+    "B200"
+  ],
+  "successful_gpus": [
+    "H100 SXM",
+    "H200",
+    "A100 SXM4",
+    "RTX 5090",
+    "B200"
+  ],
+  "failed_gpus": [],
+  "total_observations": 460,
+  "primary_gpu": "H100 SXM",
+  "source": "Ornn Compute Price Index (OCPI)",
+  "base_url": "https://api.ornnai.com",
+  "files": {
+    "panel": "data\\processed\\compute_market\\global\\ornn_gpu_panel_long.csv",
+    "summary": "data\\processed\\compute_market\\global\\ornn_gpu_panel_summary.csv",
+    "primary_h100": "data\\processed\\compute_market\\global\\ornn_h100_primary.csv",
+    "per_gpu": {
+      "A100 SXM4": "data\\processed\\compute_market\\global\\ornn_by_gpu\\ornn_a100_sxm4.csv",
+      "B200": "data\\processed\\compute_market\\global\\ornn_by_gpu\\ornn_b200.csv",
+      "H100 SXM": "data\\processed\\compute_market\\global\\ornn_by_gpu\\ornn_h100_sxm.csv",
+      "H200": "data\\processed\\compute_market\\global\\ornn_by_gpu\\ornn_h200.csv",
+      "RTX 5090": "data\\processed\\compute_market\\global\\ornn_by_gpu\\ornn_rtx_5090.csv"
+    }
+  }
+}

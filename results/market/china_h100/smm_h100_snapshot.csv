@@ -1,0 +1,4 @@
+date,index_id,market,gpu_model,memory,region,delivery_form,contract_type,price_low,price_high,price_avg,currency,unit,observation_type,source,source_url,retrieved_at_utc,homogeneous_key
+2026-08-26,SMM-H100-80G-单卡-全国-短期-零售,china,H100,80G,全国,单卡,短期-零售,11.98,17.88,15.29,CNY,元/卡·时,SMM_public_compute_price,Shanghai Metals Market (SMM),https://aidc.smm.cn/,2026-08-26T15:28:13.623801+00:00,H100|80G|单卡|短期-零售
+2026-08-26,SMM-H100-80G-整机-西部-包月,china,H100,80G,西部,整机,包月,12.85,13.8,13.32,CNY,元/卡·时,SMM_public_compute_price,Shanghai Metals Market (SMM),https://aidc.smm.cn/,2026-08-26T15:28:13.623425+00:00,H100|80G|整机|包月
+2026-08-26,SMM-H100-80G-整机-长三角-包月,china,H100,80G,长三角,整机,包月,13.54,14.24,13.89,CNY,元/卡·时,SMM_public_compute_price,Shanghai Metals Market (SMM),https://aidc.smm.cn/,2026-08-26T15:28:13.623054+00:00,H100|80G|整机|包月

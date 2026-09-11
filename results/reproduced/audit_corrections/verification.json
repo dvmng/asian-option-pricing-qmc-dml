@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "contract_pv_finite_difference": "PASS",
+  "zero_rate_legacy_equivalence": "PASS",
+  "saved_cash_accounting": "PASS",
+  "posthoc": true,
+  "forward": [
+    {
+      "strategy": "oracle_rqmc",
+      "factor": 1.0025031276057952,
+      "historical_rmse": 0.0023106985747205814,
+      "pv_corrected_rmse": 0.0023092638168674662
+    },
+    {
+      "strategy": "mlp_ensemble",
+      "factor": 1.0025031276057952,
+      "historical_rmse": 0.10651500013359753,
+      "pv_corrected_rmse": 0.10678188962159012
+    },
+    {
+      "strategy": "dml_ensemble",
+      "factor": 1.0025031276057952,
+      "historical_rmse": 0.038698442116573854,
+      "pv_corrected_rmse": 0.03879459539474323
+    }
+  ],
+  "negative_predictions": [
+    {
+      "model": "mlp",
+      "target": "price",
+      "count": 40960,
+      "negative_count": 6032,
+      "negative_pct": 14.726562500000002,
+      "below_minus_1e_6": 5806,
+      "minimum": -0.0040485380981952
+    },
+    {
+      "model": "mlp",
+      "target": "delta",
+      "count": 40960,
+      "negative_count": 8216,
+      "negative_pct": 20.05859375,
+      "below_minus_1e_6": 8189,
+      "minimum": -0.2413018336346041
+    },
+    {
+      "model": "dml",
+      "target": "price",
+      "count": 40960,
+      "negative_count": 5347,
+      "negative_pct": 13.054199218750002,
+      "below_minus_1e_6": 5169,
+      "minimum": -0.0008845726815364
+    },
+    {
+      "model": "dml",
+      "target": "delta",
+      "count": 40960,
+      "negative_count": 5804,
+      "negative_pct": 14.169921875,
+      "below_minus_1e_6": 5680,
+      "minimum": -0.0136813784735991
+    }
+  ]
+}

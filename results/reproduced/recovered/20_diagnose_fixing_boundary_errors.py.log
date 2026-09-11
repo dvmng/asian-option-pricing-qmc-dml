@@ -1,0 +1,65 @@
+
+=== TOP-50 EXTREME ERROR PROXIMITY TO MONTHLY FIXING BOUNDARIES ===
+    split model_type         error_metric  top_n  all_scenarios_median_distance_days  top_median_distance_days  top_frac_within_0_5d  top_frac_within_1d  top_frac_within_2d  top_frac_within_3d  spearman_error_vs_distance
+reference        dml price_abs_error_mean     50                            7.543131                  3.709636                  0.10                0.20                0.36                0.44                   -0.181060
+reference        dml delta_abs_error_mean     50                            7.543131                  1.625224                  0.16                0.32                0.58                0.72                   -0.154003
+reference        mlp price_abs_error_mean     50                            7.543131                  4.456351                  0.10                0.18                0.34                0.44                   -0.125575
+reference        mlp delta_abs_error_mean     50                            7.543131                  3.104500                  0.08                0.18                0.38                0.50                   -0.120792
+     test        dml price_abs_error_mean     50                            7.537032                  1.229104                  0.36                0.44                0.68                0.76                   -0.145705
+     test        dml delta_abs_error_mean     50                            7.537032                  0.487397                  0.52                0.64                0.88                0.92                   -0.161111
+     test        mlp price_abs_error_mean     50                            7.537032                  0.955774                  0.32                0.50                0.74                0.82                   -0.146920
+     test        mlp delta_abs_error_mean     50                            7.537032                  1.131293                  0.34                0.46                0.74                0.86                   -0.133855
+
+=== ERROR BY NUMBER OF FUTURE FIXINGS ===
+    split model_type  n_fix_future   n  price_abs_error_mean  price_abs_error_p95  delta_abs_error_mean  delta_abs_error_p95  delta_abs_error_max
+reference        dml             1  36              0.000139             0.000285              0.000186             0.000357             0.001015
+reference        dml             2  90              0.000208             0.000309              0.000578             0.000806             0.030181
+reference        dml             3  90              0.000348             0.000256              0.000380             0.000710             0.012910
+reference        dml             4  91              0.000078             0.000179              0.000193             0.000599             0.001014
+reference        dml             5  87              0.000097             0.000177              0.000155             0.000350             0.001540
+reference        dml             6  90              0.000083             0.000186              0.000143             0.000344             0.001058
+reference        dml             7  90              0.000096             0.000229              0.000154             0.000371             0.002474
+reference        dml             8  90              0.000079             0.000167              0.000117             0.000297             0.000554
+reference        dml             9  91              0.000073             0.000196              0.000139             0.000455             0.000854
+reference        dml            10  90              0.000051             0.000113              0.000111             0.000317             0.000551
+reference        dml            11  89              0.000081             0.000175              0.000126             0.000351             0.001543
+reference        dml            12  90              0.000075             0.000185              0.000085             0.000231             0.000611
+reference        mlp             1  36              0.000122             0.000291              0.001567             0.002916             0.003847
+reference        mlp             2  90              0.000446             0.000296              0.004139             0.004205             0.179263
+reference        mlp             3  90              0.000361             0.000339              0.003409             0.005536             0.139679
+reference        mlp             4  91              0.000071             0.000175              0.001093             0.003129             0.007119
+reference        mlp             5  87              0.000101             0.000196              0.002052             0.002610             0.100464
+reference        mlp             6  90              0.000060             0.000182              0.000745             0.002094             0.005340
+reference        mlp             7  90              0.000086             0.000219              0.000943             0.003270             0.014800
+reference        mlp             8  90              0.000059             0.000154              0.000634             0.001955             0.003798
+reference        mlp             9  91              0.000060             0.000141              0.000742             0.002083             0.015043
+reference        mlp            10  90              0.000060             0.000146              0.000608             0.001755             0.011023
+reference        mlp            11  89              0.000061             0.000157              0.000628             0.002431             0.008681
+reference        mlp            12  90              0.000047             0.000125              0.000412             0.001317             0.002427
+     test        dml             1 288              0.000213             0.000264              0.000352             0.000371             0.048164
+     test        dml             2 718              0.000211             0.000266              0.000453             0.000702             0.072730
+     test        dml             3 719              0.000316             0.000251              0.000475             0.000599             0.060113
+     test        dml             4 718              0.000297             0.000230              0.000343             0.000561             0.050507
+     test        dml             5 719              0.000080             0.000190              0.000161             0.000405             0.002876
+     test        dml             6 718              0.000089             0.000210              0.000144             0.000385             0.003245
+     test        dml             7 719              0.000097             0.000200              0.000158             0.000363             0.018350
+     test        dml             8 718              0.000081             0.000182              0.000122             0.000376             0.001068
+     test        dml             9 719              0.000074             0.000187              0.000150             0.000441             0.002284
+     test        dml            10 718              0.000061             0.000145              0.000120             0.000295             0.004372
+     test        dml            11 720              0.000079             0.000180              0.000110             0.000294             0.001276
+     test        dml            12 718              0.000077             0.000182              0.000088             0.000237             0.000900
+     test        mlp             1 288              0.000200             0.000311              0.003074             0.004282             0.148568
+     test        mlp             2 718              0.000236             0.000313              0.002956             0.005208             0.307958
+     test        mlp             3 719              0.000247             0.000290              0.002569             0.004893             0.352121
+     test        mlp             4 718              0.000319             0.000252              0.001418             0.003504             0.069616
+     test        mlp             5 719              0.000082             0.000218              0.001052             0.002990             0.071355
+     test        mlp             6 718              0.000073             0.000160              0.000946             0.002155             0.088417
+     test        mlp             7 719              0.000079             0.000194              0.000893             0.002174             0.051119
+     test        mlp             8 718              0.000062             0.000152              0.000701             0.002088             0.011686
+     test        mlp             9 719              0.000064             0.000166              0.000652             0.002178             0.019384
+     test        mlp            10 718              0.000058             0.000133              0.000692             0.001806             0.029297
+     test        mlp            11 720              0.000051             0.000128              0.000527             0.001629             0.010298
+     test        mlp            12 718              0.000048             0.000124              0.000436             0.001365             0.009788
+
+Saved -> C:\Users\david\Documents\Codex\2026-09-10\files-mentioned-by-the-user-tfm\work\tfm_compute_thesis_corregido\results\reproduced\recovered\fixing_boundary
+PHASE 4D.1 COMPLETED (NO RETRAINING).

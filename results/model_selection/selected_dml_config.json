@@ -1,0 +1,55 @@
+{
+  "status": "SELECTED_COMPUTE_DML_LAMBDA",
+  "shared_model_params": {
+    "backbone": "residual",
+    "width": 128,
+    "n_blocks": 3,
+    "activation": "silu",
+    "optimizer": "adamw",
+    "learning_rate": 0.0019615987173439097,
+    "scheduler": "cosine",
+    "weight_decay": 6.634059887871314e-07
+  },
+  "expected_parameter_count_7_inputs": 100225,
+  "lambda_grid": [
+    0.25,
+    0.5,
+    1.0,
+    2.0,
+    4.0
+  ],
+  "lambda_seeds": [
+    1701,
+    3701,
+    5701
+  ],
+  "lambda_train_size": 8192,
+  "lambda_max_epochs": 1500,
+  "checkpoint_role": "first disjoint validation half after deterministic permutation; epoch selected by standardized price MSE only",
+  "lambda_selection_role": "second disjoint validation half; never used to choose training epoch",
+  "lambda_selection_metric": "0.5*standardized_price_MSE + 0.5*RMS-weighted_standardized_Delta_MSE",
+  "selection_rule": "minimum mean balanced score on disjoint lambda-selection validation set",
+  "selected_lambda_delta": 0.25,
+  "best_lambda_by_mean": 0.25,
+  "best_mean_balanced_score": 0.16184600039074817,
+  "best_standard_error": 0.003839419243784611,
+  "one_se_threshold": 0.1656854196345328,
+  "legacy_benchmark_lambda": 4.0,
+  "final_training_seeds": [
+    1701,
+    2701,
+    3701,
+    4701,
+    5701
+  ],
+  "final_train_sizes": [
+    1024,
+    4096,
+    16384,
+    65536
+  ],
+  "final_max_epochs": 3000,
+  "final_checkpoint_metric": "val_price_mse_std",
+  "no_architecture_reoptimization": true,
+  "no_optimizer_reoptimization": true
+}

@@ -1,0 +1,9 @@
+{
+  "config_sha256": "5f6986cf7e244a8b9f9cefb2e353774cc762a6d114da67cf66b80119ab0dece4",
+  "files": {
+    "train.csv.gz": "6fd35be56963504b441091422d3ca4ecc1451b85539ec574b6f7ea3b0b228bf0",
+    "val.csv.gz": "70aeae76aa9e32a226553bae4af51c0ab59e4695355cfeac01c9ae56898df1ef",
+    "test.csv.gz": "96f5302cd58829ad51f9f17a88eaeda03c498113f1e9b995feea161897bc64af",
+    "reference.csv.gz": "36d4710eca192eb3335c3389211d5c89ebddd9c2fd8979ff98eb57038162e526"
+  }
+}

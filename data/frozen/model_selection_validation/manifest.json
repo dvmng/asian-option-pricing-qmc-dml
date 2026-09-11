@@ -1,0 +1,46 @@
+{
+  "purpose": "Dedicated ML hyperparameter-selection validation sets",
+  "warning": "val_checkpoint is locked and must not be used by HPO, architecture selection, or DML lambda selection.",
+  "splits": {
+    "val_hpo": {
+      "n_states": 4096,
+      "outer_seed": 71001,
+      "history_seed": 81001,
+      "pricing_seed": 91001,
+      "n_paths": 8192,
+      "n_replications": 1,
+      "path": "data_hpo\\val_hpo.csv.gz",
+      "sha256": "a268125c2097cd38724e0fa76d17d83b031eb0ffcd68eb632038bf3bea24910e"
+    },
+    "val_select": {
+      "n_states": 4096,
+      "outer_seed": 72001,
+      "history_seed": 82001,
+      "pricing_seed": 92001,
+      "n_paths": 8192,
+      "n_replications": 1,
+      "path": "data_hpo\\val_select.csv.gz",
+      "sha256": "c7a9c5c7b8051bf1bbd52c166690bc6dae216f30cadf5c1a595e2a406fdfae66"
+    },
+    "val_lambda": {
+      "n_states": 4096,
+      "outer_seed": 73001,
+      "history_seed": 83001,
+      "pricing_seed": 93001,
+      "n_paths": 8192,
+      "n_replications": 1,
+      "path": "data_hpo\\val_lambda.csv.gz",
+      "sha256": "1439ed7260cb505a30f6a3214105b58eb6d882c3324496691fac48e4bd0d42a0"
+    },
+    "val_checkpoint": {
+      "n_states": 8192,
+      "outer_seed": 74001,
+      "history_seed": 84001,
+      "pricing_seed": 94001,
+      "n_paths": 8192,
+      "n_replications": 1,
+      "path": "data_hpo\\val_checkpoint.csv.gz",
+      "sha256": "d1e5839b61a1b9fa742f5e58c99ad06529f22d98e4c8fca41c0742b6c04e43ef"
+    }
+  }
+}

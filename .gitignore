@@ -1,12 +1,30 @@
 __pycache__/
-*.pyc
-.venv/
-venv/
-.env
+*.py[cod]
 .ipynb_checkpoints/
+.venv/
+.env
 
-data/simulated/*.csv
-data/simulated/*.csv.gz
-results/raw/
+# Archivos auxiliares de LaTeX; se conservan el PDF final y las tablas.
+thesis/*.aux
+thesis/*.bbl
+thesis/*.bcf
+thesis/*.blg
+thesis/*.lof
+thesis/*.log
+thesis/*.lot
+thesis/*.out
+thesis/*.run.xml
+thesis/*.synctex.gz
+thesis/*.toc
+thesis/*.fls
+thesis/*.fdb_latexmk
 
+# Large binary checkpoints: use Git LFS or release artifacts if publishing.
+# Uncomment for a lightweight public repository:
+# models/final/**/model.pt
+
+# Temporary editor files
+.vscode/
+.idea/
 .DS_Store
+Thumbs.db

@@ -1,0 +1,22 @@
+[
+  {
+    "file": "05_phase2_h100_model_evidence.py",
+    "source": "backups/tfm_compute_v2/scripts/05_phase2_h100_model_evidence.py",
+    "sha256": "2c7d9a0582d066d9fc92f16d848c531c93342ec9c97b679cfb4b03db1d84aca7"
+  },
+  {
+    "file": "11_bootstrap_logou_design_bands.py",
+    "source": "backups/tfm_compute_v2/scripts/11_bootstrap_logou_design_bands.py",
+    "sha256": "0ff2e67b1381d51676abf5a2e8e00de0cbf7c31f4d7e7731e070e611b8d8042f"
+  },
+  {
+    "file": "19_diagnose_compute_extreme_errors.py",
+    "source": "backups/tfm_compute_v2/scripts/19_diagnose_compute_extreme_errors.py",
+    "sha256": "7baada97bb4d993b2afcd9df090e5e329373c95f14dcb3cebb86416059bf81c6"
+  },
+  {
+    "file": "20_diagnose_fixing_boundary_errors.py",
+    "source": "backups/tfm_compute_v2/scripts/20_diagnose_fixing_boundary_errors.py",
+    "sha256": "70e954e6fec56e7b2b55ed10f50e13fc12480b201d526628f279b1e106568014"
+  }
+]

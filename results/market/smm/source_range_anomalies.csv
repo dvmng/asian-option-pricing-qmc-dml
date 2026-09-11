@@ -1,0 +1,2 @@
+﻿date,index_id,gpu_model,memory,delivery_form,region,contract_type,price_low,price_high,price_avg,change,currency,unit,source,is_observed
+2026-07-21,SMM-H20-141G-整机-成渝-包月,H20,141G,整机,成渝,包月,7.29,7.47,7.9,0.52,CNY,CNY/GPU-hour,SMM official authenticated CSV export,True

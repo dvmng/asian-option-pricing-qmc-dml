@@ -1,0 +1,81 @@
+{
+  "generated_at_utc": "2026-08-26T15:09:46.713828+00:00",
+  "status": "PHASE_0_1_FOUNDATION",
+  "files": [
+    {
+      "file": "src/compute/__init__.py",
+      "sha256": "1a314aecfdb5d34c1e3a08fa549f6d3ba01fb5f45325b6324e76324fcd9d8da9",
+      "bytes": 229
+    },
+    {
+      "file": "src/compute/data_sources.py",
+      "sha256": "d496035e605f8fd3b93b22770767728859a96b547f9a8c4f20ebd037907316e8",
+      "bytes": 9203
+    },
+    {
+      "file": "src/compute/diagnostics.py",
+      "sha256": "ae92f84d4f74f5f8e031ec0efea97fa5f6c7bb4878d908641d6ca44e93e547d1",
+      "bytes": 6334
+    },
+    {
+      "file": "src/compute/index_builder.py",
+      "sha256": "d83db975d38b0c1c0b27f293ca96e73b960e832f289e402f7b859aa227712cc6",
+      "bytes": 3210
+    },
+    {
+      "file": "scripts/00_hash_legacy_results.py",
+      "sha256": "6756527968c3d7ab200f581d2639392a21715fb2f4621ea0091fa50dc24931ee",
+      "bytes": 1809
+    },
+    {
+      "file": "scripts/01_download_global_ornn.py",
+      "sha256": "ca53a02ddf22b9bf0aecf8c7056a4872b7afd22a9ba5732a78219b3af443ace9",
+      "bytes": 1024
+    },
+    {
+      "file": "scripts/02_download_china_smm_snapshot.py",
+      "sha256": "8de899b6483a88182e0a2433231957771ba42fa20e045755fb35827e1929122b",
+      "bytes": 1231
+    },
+    {
+      "file": "scripts/02b_import_smm_history.py",
+      "sha256": "4d6bd70ffb5ff408e6d0630c48c9310608b704c6be8fa42a8f93a5d9a44ecfa1",
+      "bytes": 801
+    },
+    {
+      "file": "scripts/03_run_series_diagnostics.py",
+      "sha256": "fb86072d8cb6820b138cd3ffdd4304b80624e8bf52fc5872c5e4ecebcc0107c1",
+      "bytes": 1848
+    },
+    {
+      "file": "scripts/04_prepare_base100_series.py",
+      "sha256": "61ead618a711d4a07d0fce43ecea8701cf3fa95e06b778031136b88ea3fb743e",
+      "bytes": 897
+    },
+    {
+      "file": "docs/DATA_SOURCE_PLAN.md",
+      "sha256": "0157f90108067e10bc2e5b8adc6faa815d536f8b75b8015bc664f28073f67811",
+      "bytes": 1573
+    },
+    {
+      "file": "docs/REFACTOR_MAP.md",
+      "sha256": "96767712cbd4f274d90e345915af49c88b7e4e439a548f16882d0eaaee9ea505",
+      "bytes": 2113
+    },
+    {
+      "file": "README_PHASES.md",
+      "sha256": "92b3ccd496d525af8377bd2fce8f5d6ffa7dee26269081f06a0994d1bab46814",
+      "bytes": 2660
+    },
+    {
+      "file": "requirements_compute.txt",
+      "sha256": "cbb5eade6097dff95ba959450326b8b2a79f9e733a8a06e0596f4b8c5b796cbe",
+      "bytes": 181
+    },
+    {
+      "file": "RUN_PHASE1.ps1",
+      "sha256": "0c65faeeb341d995c5cd71cae25994b4f319e861b03ae6f414419c1551bfc28e",
+      "bytes": 852
+    }
+  ]
+}
