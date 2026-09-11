@@ -1,9 +1,0 @@
-Este Trabajo Fin de Máster evalúa si 
-\textit{Differential Machine Learning} (DML) mejora, frente a un MLP convencional, la valoración y especialmente la estimación de Delta de una opción asiática aritmética sobre capacidad de cómputo. Como referencia empírica se utiliza una serie diaria de precios de alquiler de NVIDIA H100 y evidencia descriptiva complementaria del mercado chino. La dinámica física se representa mediante un proceso Log-Ornstein--Uhlenbeck y la valoración se realiza bajo una ley de pricing modelizada. Los precios y sensibilidades de referencia se generan mediante Randomized Quasi-Monte Carlo y estimación pathwise de Delta. MLP y DML comparten arquitectura, muestras y protocolo de entrenamiento, y se comparan en cuatro tamaños muestrales y cinco semillas emparejadas.
-
-Con $65\,536$ estados de entrenamiento, DML reduce el RMSE de precio en test de $0.001624$ a $0.001516$, aunque el MLP obtiene un MAE ligeramente inferior. La diferencia es mucho mayor en Delta: el RMSE disminuye de $0.008528$ a $0.001817$ y el MAE de $0.001234$ a $0.000216$. Esta mejora se transmite a la cobertura local: ante un shock del $1\%$, DML obtiene un RMSE de $1.058\times10^{-6}$ frente a $6.688\times10^{-6}$ para MLP y $1.355\times10^{-4}$ sin cobertura. En la cobertura dinámica con forwards modelizados, DML mejora sustancialmente al MLP, pero unas pocas trayectorias extremas impiden que domine a la posición sin cobertura en RMSE agregado.
-
-Los resultados muestran que la supervisión diferencial mejora de forma robusta el aprendizaje de sensibilidades y su utilidad local para gestión del riesgo, pero también que una Greek más precisa no garantiza por sí sola una cobertura dinámica superior.
-
-\vspace{0.5em}
-\noindent\textbf{Palabras clave:} Differential Machine Learning; opciones asiáticas; capacidad de cómputo; Randomized Quasi-Monte Carlo; Delta; cobertura; Log-OU.
