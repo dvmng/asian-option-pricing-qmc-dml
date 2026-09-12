@@ -4,8 +4,6 @@ Code, datasets, trained models and results for a master's thesis in quantitative
 
 The study prices arithmetic Asian options on GPU compute capacity under a log-Ornstein–Uhlenbeck model. Randomized quasi-Monte Carlo (RQMC) produces price and Delta labels for two neural network approaches: a price-only multilayer perceptron (MLP) and differential machine learning (DML). The experiments compare out-of-sample accuracy, errors near fixing dates and extreme scenarios, and local and dynamic hedging performance.
 
-**[Read the thesis (PDF, in Spanish)](thesis/main.pdf)**
-
 ## Repository contents
 
 | Directory | Contents |
