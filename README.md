@@ -1,177 +1,127 @@
-# Valoración y cobertura de opciones asiáticas
+# Pricing and Hedging Asian Options on GPU Compute: RQMC and Differential Machine Learning
 
-Código, datos y evidencia reproducible del Trabajo Fin de Máster del Máster en Finanzas Cuantitativas.
+Code, datasets, trained models and results for a master's thesis in quantitative finance.
 
-El proyecto estudia la valoración de opciones asiáticas aritméticas sobre capacidad de cómputo y la estimación de Delta mediante Randomized Quasi-Monte Carlo (RQMC), un perceptrón multicapa (MLP) y Differential Machine Learning (DML). La evaluación incluye análisis fuera de muestra, diagnóstico de errores y ejercicios de cobertura local y dinámica.
+The study prices arithmetic Asian options on GPU compute capacity under a log-Ornstein–Uhlenbeck model. Randomized quasi-Monte Carlo (RQMC) produces price and Delta labels for two neural network approaches: a price-only multilayer perceptron (MLP) and differential machine learning (DML). The experiments compare out-of-sample accuracy, errors near fixing dates and extreme scenarios, and local and dynamic hedging performance.
 
-## Memoria del TFM
+**[Read the thesis (PDF, in Spanish)](thesis/main.pdf)**
 
-**[Leer o descargar el TFM completo (PDF)](thesis/main.pdf)**
+## Repository contents
 
-Autor: David Martín Gómez. Este repositorio contiene la versión final del código y la evidencia reproducible que acompaña a la memoria. Las instrucciones de comprobación y reproducción se incluyen a continuación.
+| Directory | Contents |
+|---|---|
+| `data/raw/`, `data/processed/` | Market observations and processed data |
+| `data/frozen/` | Pricing datasets, training order and validation splits used in the thesis |
+| `models/final/` | The 40 final model checkpoints and their training records |
+| `results/` | Calibration, pricing, model selection, error diagnostics and hedging results |
+| `protocols/` | Fixed experiment settings |
+| `src/` | Pricing, simulation and learning code |
+| `experiments/` | Eight experiment entry points |
+| `checks/` | Integrity checks, regression comparisons and additional diagnostics |
+| `archive/recovered_scripts/` | Recovered analysis scripts and provenance records |
+| `figures/`, `tables/` | Figures and tables used in the thesis |
+| `thesis/` | Compiled thesis PDF |
+| `docs/` | Reproduction notes and documented corrections, in Spanish |
 
-## Estructura del repositorio
+New runs write to `data/reproduced/`, `models/reproduced/` and `results/reproduced/`. The frozen datasets, final checkpoints and published results are kept as the reference for comparison.
 
-```text
-tfm_compute_thesis/
-├── data/
-│   ├── raw/                         datos de mercado preservados
-│   ├── processed/                   datos derivados y normalizados
-│   ├── frozen/                      datasets exactos usados en el TFM
-│   ├── staging/                     nuevas descargas no congeladas
-│   └── reproduced/                  datasets regenerados
-├── models/
-│   ├── final/                       40 checkpoints usados en el TFM
-│   └── reproduced/                  nuevos entrenamientos
-├── results/
-│   ├── calibration/
-│   ├── diagnostics/
-│   ├── hedging/
-│   ├── market/
-│   ├── ml/
-│   ├── model_selection/
-│   ├── pricing/
-│   └── reproduced/                  resultados de nuevas ejecuciones
-├── protocols/                       configuración metodológica final
-├── src/                             implementación cuantitativa
-├── experiments/                     ocho etapas ejecutables
-├── checks/                          controles estructurales y de regresión
-├── figures/                         figuras utilizadas por el TFM
-├── tables/                          tablas generadas para el TFM
-├── thesis/                          fuentes LaTeX y PDF final
-├── main.py
-├── pyproject.toml
-└── requirements.txt
-```
+## Setup
 
-Los directorios `data/frozen/`, `models/final/` y los resultados finales conservan la evidencia utilizada en el documento. Las nuevas ejecuciones se escriben en `data/reproduced/`, `models/reproduced/` y `results/reproduced/` para evitar cualquier sobrescritura accidental.
+Python 3.11 or later is required. The final evaluation used PyTorch 2.12.1 with CUDA 12.6. A CUDA GPU is recommended for regenerating the RQMC dataset and training all 40 models.
 
-## Entorno
+Run these commands from the repository root:
 
-Se requiere Python 3.11 o superior. La evaluación final se realizó con PyTorch 2.12.1 y CUDA 12.6; una GPU CUDA es recomendable para regenerar el dataset RQMC y reentrenar la cuadrícula completa de modelos.
-
-Instalación:
-
-```powershell
+```shell
 python -m pip install -r requirements.txt
 python -m pip install -e . --no-build-isolation
 ```
 
-Si se utiliza CUDA, la instalación de PyTorch debe corresponder a la versión CUDA disponible en el equipo.
+For GPU runs, install a PyTorch build compatible with your CUDA environment.
 
-## Comprobación de la entrega
+## Check the saved results
 
-Ejecutar desde la raíz del repositorio:
-
-```powershell
+```shell
 python main.py --checks
 python main.py --layout
+```
+
+`--checks` verifies the frozen pricing dataset, the 40-model grid, the hedging protocols and the main result files. `--layout` displays the project structure. Neither command retrains the models.
+
+To rebuild the thesis figures and tables from the saved results:
+
+```shell
 python main.py --outputs
 ```
 
-`--checks` valida la integridad del dataset congelado, la cuadrícula de 40 modelos finales, los protocolos de cobertura y los principales resultados utilizados por el TFM. `--outputs` regenera las figuras y tablas del documento a partir de la evidencia final almacenada, sin reentrenar modelos.
+## Experiments
 
-## Flujo experimental
+The workflow runs from market data and Log-OU calibration through RQMC label generation, neural network training, evaluation and hedging.
 
-```text
-Datos de mercado preservados
-        ↓
-Análisis descriptivo y calibración Log-OU
-        ↓
-Generación del dataset RQMC de precio y Delta
-        ↓
-Entrenamiento MLP / DML
-        ↓
-Evaluación fuera de muestra
-        ↓
-Diagnóstico de errores
-        ↓
-Cobertura local
-        ↓
-Cobertura dinámica
-```
-
-Las etapas ejecutables son:
-
-| Etapa | Script | Función |
+| Stage | Script in `experiments/` | Purpose |
 |---:|---|---|
-| 1 | `01_market_data.py` | Inspección de datos preservados y descarga opcional de nuevos datos Ornn |
-| 2 | `02_market_analysis.py` | Análisis descriptivo multi-GPU |
-| 3 | `03_model_calibration.py` | Calibración física del modelo Log-OU |
-| 4 | `04_pricing_dataset.py` | Generación del dataset RQMC de precio y Delta |
-| 5 | `05_ml_training.py` | Entrenamiento de MLP y DML |
-| 6 | `06_ml_evaluation.py` | Evaluación final sobre test y referencia |
-| 7 | `07_local_hedging.py` | Validación de cobertura local |
-| 8 | `08_dynamic_hedging.py` | Stress test de cobertura dinámica |
+| 1 | `01_market_data.py` | Inspect saved market data or fetch a new Ornn observation |
+| 2 | `02_market_analysis.py` | Compare market observations across GPU types |
+| 3 | `03_model_calibration.py` | Calibrate Log-OU dynamics under the physical measure |
+| 4 | `04_pricing_dataset.py` | Generate RQMC price and Delta labels |
+| 5 | `05_ml_training.py` | Train MLP and DML models |
+| 6 | `06_ml_evaluation.py` | Evaluate on the test and reference datasets |
+| 7 | `07_local_hedging.py` | Run local hedging experiments |
+| 8 | `08_dynamic_hedging.py` | Run the dynamic hedging stress test |
 
-La ayuda específica de cada etapa puede consultarse con, por ejemplo:
+Each stage has its own command-line help. For example:
 
-```powershell
+```shell
 python main.py --experiment 5 -- --help
 ```
 
-## Reproducción del experimento final
+## Reproduce the final experiment
 
-La siguiente secuencia regenera el núcleo computacional sin modificar la evidencia original.
+Generate the pricing dataset:
 
-Generar nuevamente el dataset de valoración:
-
-```powershell
+```shell
 python main.py --experiment 4 -- --preset tfm --device cuda --output data/reproduced/pricing_dataset
 ```
 
-Reentrenar la cuadrícula completa de 40 modelos. Si `data/reproduced/ml_prepared/train_order.npy` no existe, se reconstruye automáticamente con la semilla fijada en el protocolo del proyecto y se comprueba contra el orden congelado:
+Train the full grid of 40 models:
 
-```powershell
+```shell
 python main.py --experiment 5 -- --data-dir data/reproduced/pricing_dataset --prepared-dir data/reproduced/ml_prepared --output-dir models/reproduced --full-grid --device cuda
 ```
 
-Evaluar los modelos reproducidos:
+If `data/reproduced/ml_prepared/train_order.npy` is missing, the training order is rebuilt using the protocol seed and checked against the frozen order.
 
-```powershell
+Evaluate the new models:
+
+```shell
 python main.py --experiment 6 -- --data-dir data/reproduced/pricing_dataset --results-dir models/reproduced --output-dir results/reproduced/ml_evaluation --device cuda --save-predictions
 ```
 
-Repetir los ejercicios de cobertura con los modelos reproducidos:
+Run both hedging experiments with those models:
 
-```powershell
+```shell
 python main.py --experiment 7 -- --models-dir models/reproduced --output-dir results/reproduced/hedging/local --device cuda
 python main.py --experiment 8 -- --models-dir models/reproduced --output-dir results/reproduced/hedging/dynamic_forward --device cuda
 ```
 
-Los CSV reproducidos pueden contrastarse con la evidencia final mediante `checks/regression_check.py`. Por ejemplo:
+Compare the new metrics with the saved results:
 
-```powershell
+```shell
 python checks/regression_check.py results/ml/final_evaluation/aggregate_metrics.csv results/reproduced/ml_evaluation/aggregate_metrics.csv
 ```
 
-## Datos de mercado
+## Data and model selection
 
-Los datos utilizados por el TFM se conservan en `data/raw/` y `data/processed/`. Esto permite reproducir el análisis a partir de las observaciones preservadas sin depender de que una fuente web siga devolviendo exactamente el mismo histórico.
+The market observations used in the thesis are included in `data/raw/` and `data/processed/`, so the analysis does not depend on a web source returning the same historical data later. Stage 1's `--refresh-ornn` option saves new observations to `data/staging/`.
 
-La opción `--refresh-ornn` de la etapa 1 descarga una observación nueva a `data/staging/`; no sustituye ni modifica los datos empleados en el trabajo.
+Hyperparameter selection and differential-loss weighting records are stored in `results/model_selection/` and `data/frozen/model_selection_validation/`. The commands above reproduce the final experiment with its fixed protocol; the full exploratory hyperparameter search is not rerun.
 
-## Selección de modelos
+## Additional checks and corrections
 
-La evidencia de la selección de hiperparámetros y de la ponderación diferencial se conserva en `results/model_selection/` y `data/frozen/model_selection_validation/`. El repositorio de entrega reproduce el experimento final a partir del protocolo metodológico congelado; no reejecuta la búsqueda exploratoria completa de hiperparámetros.
+[Reproduction notes](docs/REPRODUCIBILIDAD.md) document the four recovered scripts, their original paths and the verified environment. To run the recovered analyses and the forward present-value diagnostic:
 
-## Documento
-
-El manuscrito se encuentra en `thesis/`. Las figuras y tablas finales se almacenan en `figures/` y `tables/` y se regeneran con:
-
-```powershell
-python main.py --outputs
-```
-
-Los datasets congelados, los checkpoints y los resultados finales deben permanecer sin modificaciones para conservar la evidencia del experimento. Esta edición revisa el PDF y sus fuentes y distingue la política forward histórica de la corrección del valor actual.
-
-## Correcciones y comprobaciones posteriores
-
-Consultar `docs/REPRODUCIBILIDAD.md` para la procedencia de los cuatro scripts recuperados, el mapa de rutas históricas y el entorno verificado. Para reproducir las etapas recuperadas y los diagnósticos nuevos:
-
-```powershell
+```shell
 python -B checks/reproduce_recovered.py
 python -B checks/forward_pv_diagnostic.py
 ```
 
-Los resultados se guardan en `results/reproduced/`; no sustituyen la evidencia congelada. Las tablas principales del manuscrito mantienen los resultados históricos y la corrección de descuento se presenta por separado.
+These outputs are saved under `results/reproduced/`. The thesis retains the original forward-hedging results in its main tables and reports the present-value discounting correction separately.
